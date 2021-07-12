@@ -1,4 +1,9 @@
 import axios from "axios"
+
+//deploy
+const UrlBase = 'https://backgames.herokuapp.com'; 
+// LOCAL
+//const UrlBase = 'http://localhost:3001'
 export function loading(payload){
     return {
         type:"LOADING", payload: payload  
@@ -41,7 +46,7 @@ export function getAll() {
         try {
             allResults=[]
             dispatch(loading(true))
-            await getData(1, 'http://localhost:3001/videogames?page=')
+            await getData(1, `${UrlBase}/videogames?page=`)
             dispatch({type: 'GET_ALL_VIDEOGAMES', payload: allResults})
             dispatch(loading(false))
         } catch (error) {
@@ -55,7 +60,7 @@ export function searchResults(name) {
         try {
             dispatch(loading(true))
             allSearchResults=[]
-            await getDataResults(1, 'http://localhost:3001/videogames?name=' + name + '&page=')
+            await getDataResults(1, `${UrlBase}videogames?name=' + ${name} + '&page=`)
             dispatch({type: 'SEARCH_RESULTS', payload: allSearchResults})
             dispatch(loading(false))
         } catch (error) {
@@ -67,7 +72,7 @@ export function searchResults(name) {
 export function getGenres() {
     return async function (dispatch) {
         try {
-            const results = await axios.get('http://localhost:3001/genres')
+            const results = await axios.get(`${UrlBase}/genres`)
             dispatch({type: 'GET_GENRES', payload: results.data})
             
         } catch (error) {
@@ -80,7 +85,7 @@ export function getGenres() {
 export function getPlatforms() {
     return async function (dispatch) {
         try {
-            const results = await axios.get('http://localhost:3001/platforms')
+            const results = await axios.get(`${UrlBase}/platforms`)
             dispatch({type: 'GET_PLATFORMS', payload: results.data})
         } catch (error) {
             console.error(error)
@@ -92,7 +97,7 @@ export function postVideogame(payload) {
     return async function (dispatch) {
         try {
             
-            await axios.post('http://localhost:3001/videogames', payload)
+            await axios.post(`${UrlBase}videogames`, payload)
             dispatch(getAll())
             alert('Successfully created')
         } catch (error) {
@@ -105,7 +110,7 @@ export function videogameDetail(id) {
     return async function (dispatch) {
         try {
             dispatch(loading(true))
-            const details = await axios.get('http://localhost:3001/videogames/' + id)
+            const details = await axios.get(`${UrlBase}/videogames/ + ${id}`)
             dispatch({type: 'GET_VIDEOGAME_DETAIL', payload: details.data})
             dispatch(loading(false))
         } catch (error) {

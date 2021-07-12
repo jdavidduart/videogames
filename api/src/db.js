@@ -6,10 +6,18 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/videogames`, {
+//elephant
+const sequelize = new Sequelize('postgres://yaveyezk:vAqCgdM4oDORvKVJvovJ1B6DiS4hYxFW@batyr.db.elephantsql.com/yaveyezk', {
+   logging: false, // set to console.log to see the raw SQL queries
+   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+});
+
+//local
+/* const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/videogames`, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-});
+}); */
+
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
