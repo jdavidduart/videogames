@@ -60,7 +60,7 @@ export function searchResults(name) {
         try {
             dispatch(loading(true))
             allSearchResults=[]
-            await getDataResults(1, `${UrlBase}videogames?name=' + ${name} + '&page=`)
+            await getDataResults(1, `${UrlBase}/videogames?name=' + ${name} + '&page=`)
             dispatch({type: 'SEARCH_RESULTS', payload: allSearchResults})
             dispatch(loading(false))
         } catch (error) {
@@ -97,7 +97,7 @@ export function postVideogame(payload) {
     return async function (dispatch) {
         try {
             
-            await axios.post(`${UrlBase}videogames`, payload)
+            await axios.post(`${UrlBase}/videogames`, payload)
             dispatch(getAll())
             alert('Successfully created')
         } catch (error) {
@@ -110,7 +110,7 @@ export function videogameDetail(id) {
     return async function (dispatch) {
         try {
             dispatch(loading(true))
-            const details = await axios.get(`${UrlBase}/videogames/ + ${id}`)
+            const details = await axios.get(`${UrlBase}/videogames/${id}`)
             dispatch({type: 'GET_VIDEOGAME_DETAIL', payload: details.data})
             dispatch(loading(false))
         } catch (error) {
