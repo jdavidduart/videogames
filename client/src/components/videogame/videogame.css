@@ -9,8 +9,8 @@
     text-decoration: none;
 }
 
-.imgPoster{
-    width: auto;
+.imgPoster, .imgPosterWrap{
+    width: 300px;
     height: 160px;
     border-radius: 6px;
     opacity: 1;
@@ -18,8 +18,11 @@
 	transition: .3s ease-in-out;
 }
 
+.imgPosterWrap{
+    background-color: white;
+}
 .imgPoster:hover{
-    filter: blur(1px);
+    opacity: 0.7;
 }
 
 .titleGame{

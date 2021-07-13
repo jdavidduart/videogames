@@ -6,7 +6,9 @@ function Videogame(props) {
         <div>
             <Link to={`/home/videogame/${props.id}`} className='cardContainer'>
             <div className='titleGame'>{props.name}</div>
-            <img className='imgPoster' src={props.background_image} alt=''></img>
+            <div className='imgPosterWrap'>
+                <img className='imgPoster' src={props.background_image} alt=''></img>
+            </div>
             <div>
             <span className='text_white'>Genres: </span>
                 {
