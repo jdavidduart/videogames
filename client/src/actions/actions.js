@@ -1,9 +1,9 @@
 import axios from "axios"
 
 //deploy
-const UrlBase = 'https://backgames.herokuapp.com'; 
+//const UrlBase = 'https://backgames.herokuapp.com'; 
 // LOCAL
-//const UrlBase = 'http://localhost:3001'
+const UrlBase = 'http://localhost:3001'
 export function loading(payload){
     return {
         type:"LOADING", payload: payload  
